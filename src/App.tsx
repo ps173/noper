@@ -6,7 +6,7 @@ function App() {
       style={{
         backgroundColor: "black",
         margin: "0",
-        padding: "0",
+        padding: "2rem 0 0 1.5rem",
         color: "white",
         height: "100vh",
         width: "100vw",
