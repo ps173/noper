@@ -1,5 +1,6 @@
 import "papercss/dist/paper.css";
 import Editor from "./components/Editor";
+import QuestionMark from "./svgs/QuestionMark";
 function App() {
   return (
     <div
@@ -13,6 +14,24 @@ function App() {
       }}
     >
       <Editor />
+
+      <a
+        style={{
+          cursor: "pointer",
+        }}
+        target="_blank"
+        href="https://github.com/ps173/noper"
+      >
+        <QuestionMark
+          style={{
+            position: "absolute",
+            top: "2%",
+            right: "2%",
+            width: "2rem",
+            height: "2rem",
+          }}
+        />
+      </a>
     </div>
   );
 }

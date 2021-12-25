@@ -1,8 +1,8 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState, KeyboardEvent } from "react";
 import { set, get } from "idb-keyval";
 
 const Editor = () => {
-  const [editorValue, setEditorValue] = useState("Enter Your Text Here");
+  const [editorValue, setEditorValue] = useState("You can save with ctrl-s");
 
   useEffect(() => {
     const fetchState = async () => {
@@ -22,6 +22,13 @@ const Editor = () => {
     setEditorValue(event.target.value);
   };
 
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.ctrlKey && event.key === "s") {
+      event.preventDefault();
+      saveState();
+    }
+  };
+
   return (
     <>
       <textarea
@@ -34,21 +41,10 @@ const Editor = () => {
         }}
         value={editorValue}
         onChange={handleChange}
+        onKeyDown={handleKeyDown}
+        autoFocus={true}
+        spellCheck={false}
       />
-      <button
-        className="btn-small"
-        style={{
-          background: "black",
-          color: "white",
-          position: "absolute",
-          top: "2%",
-          right: "2%",
-          transition: "0.3s",
-        }}
-        onClick={saveState}
-      >
-        Save
-      </button>
     </>
   );
 };
